@@ -5,6 +5,7 @@ const serverHandle = (req: IncomingMessage, res: ServerResponse) => {
   const resData = {
     name: "a",
     site: "asd",
+    env: process.env.NODE_ENV,
   };
   res.end(JSON.stringify(resData));
 };
