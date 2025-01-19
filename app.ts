@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { handleBlogRouter } from "./src/router/blog";
 import { handleUserRouter } from "./src/router/user";
-
+import querystring from "querystring";
 const serverHandle = (req: IncomingMessage, res: ServerResponse) => {
   res.setHeader("Content-Type", "application/json");
   // const resData = {
@@ -9,6 +9,9 @@ const serverHandle = (req: IncomingMessage, res: ServerResponse) => {
   //   site: "asd",
   //   env: process.env.NODE_ENV,
   // };
+  const url = req.url!;
+  const path = url.split("?")[0];
+  req.query = querystring.parse(url.split("?")[1]);
   const blogData = handleBlogRouter(req, res);
   if (blogData) {
     res.end(JSON.stringify(blogData));
