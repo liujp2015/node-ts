@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getList = void 0;
+exports.getDetail = exports.getList = void 0;
 const getList = (author, keyword) => {
     return [
         {
@@ -20,3 +20,13 @@ const getList = (author, keyword) => {
     ];
 };
 exports.getList = getList;
+const getDetail = (id) => {
+    return {
+        id: 1,
+        title: "标题1",
+        content: "内容1",
+        createTime: 12312312312,
+        author: "zhangsan",
+    };
+};
+exports.getDetail = getDetail;

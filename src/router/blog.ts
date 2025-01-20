@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from "http";
-import { getList } from "../controller/blog";
+import { getDetail, getList } from "../controller/blog";
 import { SuccessModel } from "../model/resModel";
 const handleBlogRouter = (req: IncomingMessage, res: ServerResponse) => {
   const method = req.method;
@@ -14,9 +14,9 @@ const handleBlogRouter = (req: IncomingMessage, res: ServerResponse) => {
   }
 
   if (method === "GET" && path === "/api/blog/detail") {
-    return {
-      msg: "这是博客的详情",
-    };
+    const id: number = req.query.id;
+    const data = getDetail(id);
+    return new SuccessModel(data);
   }
 
   if (method === "POST" && path === "/api/blog/new") {

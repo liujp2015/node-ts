@@ -14,9 +14,9 @@ const handleBlogRouter = (req, res) => {
         return new resModel_1.SuccessModel(listData);
     }
     if (method === "GET" && path === "/api/blog/detail") {
-        return {
-            msg: "这是博客的详情",
-        };
+        const id = req.query.id;
+        const data = (0, blog_1.getDetail)(id);
+        return new resModel_1.SuccessModel(data);
     }
     if (method === "POST" && path === "/api/blog/new") {
         return {

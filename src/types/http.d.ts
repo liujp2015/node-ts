@@ -4,5 +4,6 @@ import { IncomingMessage } from "http";
 declare module "http" {
   interface IncomingMessage {
     query?: ParsedUrlQuery; // 为 IncomingMessage 添加 `user` 属性
+    body?: Record<string, any>;
   }
 }
